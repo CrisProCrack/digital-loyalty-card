@@ -1,0 +1,29 @@
+{
+  "name": "CinnamonVapes - Tarjeta Digital de Fidelización",
+  "short_name": "CinnamonVapes",
+  "description": "Tarjeta digital de fidelización para CinnamonVapes - Obtén 20% de descuento en tu sexta compra",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#7ECEF5",
+  "theme_color": "#7ECEF5",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/logo.svg",
+      "sizes": "100x100",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["business", "shopping"],
+  "lang": "es",
+  "scope": "/",
+  "prefer_related_applications": false
+}
