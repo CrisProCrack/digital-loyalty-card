@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrativo - CinnamonVapes</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+</head>
+<body>
+    <div class="container">
+        <header class="header admin-header">
+            <div class="logo-container">
+                <img src="assets/logo.svg" alt="CinnamonVapes Logo" class="logo">
+                <h1 class="brand-title">CinnamonVapes</h1>
+            </div>
+            <p class="tagline">Panel Administrativo</p>
+            <button class="btn btn-outline btn-small" onclick="window.location.href='index.html'">
+                Volver al Inicio
+            </button>
+        </header>
+
+        <main class="admin-content">
+            <div class="admin-tabs">
+                <button class="tab-btn active" onclick="showTab('customers')">Clientes</button>
+                <button class="tab-btn" onclick="showTab('stamping')">Marcar Compras</button>
+                <button class="tab-btn" onclick="showTab('rewards')">Canjear Recompensas</button>
+                <button class="tab-btn" onclick="showTab('stats')">Estadísticas</button>
+            </div>
+
+            <!-- Customers Tab -->
+            <div id="customers" class="tab-content active">
+                <div class="tab-header">
+                    <h2>Gestión de Clientes</h2>
+                    <button class="btn btn-primary" onclick="showAddCustomerForm()">
+                        <span class="btn-icon">➕</span>
+                        Agregar Cliente
+                    </button>
+                </div>
+
+                <!-- Add Customer Form -->
+                <div id="addCustomerForm" class="form-container hidden">
+                    <h3>Agregar Nuevo Cliente</h3>
+                    <form id="adminAddForm">
+                        <div class="form-group">
+                            <label for="adminCustomerName">Nombre completo</label>
+                            <input type="text" id="adminCustomerName" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="adminCustomerContact">Email o Teléfono</label>
+                            <input type="text" id="adminCustomerContact" name="contact" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Crear Tarjeta</button>
+                            <button type="button" class="btn btn-outline" onclick="hideAddCustomerForm()">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="customers-list">
+                    <div class="search-container">
+                        <input type="text" id="customerSearch" placeholder="Buscar cliente..." onkeyup="filterCustomers()">
+                    </div>
+                    <div id="customersList" class="cards-grid">
+                        <!-- Customer cards will be dynamically generated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stamping Tab -->
+            <div id="stamping" class="tab-content">
+                <div class="tab-header">
+                    <h2>Marcar Compras</h2>
+                    <p>Escanea el QR del cliente o busca por nombre para agregar un sello</p>
+                </div>
+
+                <div class="action-section">
+                    <div class="search-container">
+                        <input type="text" id="stampSearch" placeholder="Buscar cliente para marcar compra..." onkeyup="filterStampCustomers()">
+                    </div>
+                    
+                    <div id="stampCustomersList" class="cards-grid">
+                        <!-- Customers for stamping will be shown here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rewards Tab -->
+            <div id="rewards" class="tab-content">
+                <div class="tab-header">
+                    <h2>Canjear Recompensas</h2>
+                    <p>Clientes con tarjetas completas listos para canjear su descuento</p>
+                </div>
+
+                <div id="rewardsCustomersList" class="cards-grid">
+                    <!-- Customers ready for rewards will be shown here -->
+                </div>
+            </div>
+
+            <!-- Statistics Tab -->
+            <div id="stats" class="tab-content">
+                <div class="tab-header">
+                    <h2>Estadísticas</h2>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalCustomers">0</div>
+                        <div class="stat-label">Total Clientes</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalStamps">0</div>
+                        <div class="stat-label">Sellos Otorgados</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalRewards">0</div>
+                        <div class="stat-label">Recompensas Canjeadas</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="activeCards">0</div>
+                        <div class="stat-label">Tarjetas Activas</div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <h3>Resumen de Actividad</h3>
+                    <div class="activity-summary">
+                        <div class="activity-item">
+                            <span class="activity-label">Clientes con tarjetas completas:</span>
+                            <span class="activity-value" id="completedCards">0</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-label">Progreso promedio:</span>
+                            <span class="activity-value" id="averageProgress">0%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/admin.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="cinnamonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FADCEB;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#7ECEF5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0DB4EB;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="spiralGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7ACFF7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0DB4EB;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer cinnamon roll -->
+  <circle cx="50" cy="50" r="40" fill="url(#cinnamonGradient)" stroke="#0DB4EB" stroke-width="2"/>
+  
+  <!-- Inner spiral layers -->
+  <circle cx="50" cy="50" r="32" fill="none" stroke="url(#spiralGradient)" stroke-width="3" opacity="0.8"/>
+  <circle cx="50" cy="50" r="24" fill="none" stroke="url(#spiralGradient)" stroke-width="2.5" opacity="0.7"/>
+  <circle cx="50" cy="50" r="16" fill="none" stroke="url(#spiralGradient)" stroke-width="2" opacity="0.6"/>
+  
+  <!-- Center spiral -->
+  <path d="M 50 50 
+           Q 55 45 60 50 
+           Q 55 55 50 55 
+           Q 45 50 50 45 
+           Q 52 48 50 50" 
+           fill="url(#spiralGradient)" opacity="0.9"/>
+  
+  <!-- Decorative dots (cinnamon spices) -->
+  <circle cx="35" cy="35" r="1.5" fill="#0DB4EB" opacity="0.7"/>
+  <circle cx="65" cy="40" r="1" fill="#0DB4EB" opacity="0.6"/>
+  <circle cx="60" cy="65" r="1.5" fill="#0DB4EB" opacity="0.8"/>
+  <circle cx="40" cy="68" r="1" fill="#0DB4EB" opacity="0.6"/>
+  <circle cx="30" cy="55" r="1.2" fill="#0DB4EB" opacity="0.7"/>
+  
+  <!-- Highlight -->
+  <ellipse cx="42" cy="38" rx="8" ry="12" fill="#FFFFFF" opacity="0.3" transform="rotate(-25 42 38)"/>
+</svg>
