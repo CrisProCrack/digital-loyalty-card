@@ -1,0 +1,19 @@
+{
+  "name": "digital-loyalty-card",
+  "version": "1.0.0",
+  "description": "A digital loyalty card system",
+  "scripts": {
+    "start": "node backend/server.js",
+    "frontend": "cd frontend && live-server",
+    "backend": "nodemon backend/server.js",
+    "dev": "concurrently \"npm run frontend\" \"npm run backend\""
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.9"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "concurrently": "^5.3.0"
+  }
+}
