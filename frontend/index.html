@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Loyalty Cards</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading" class="loading-screen">
+        <div class="loading-spinner">
+            <i class="fas fa-credit-card"></i>
+            <p>Cargando...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-credit-card"></i>
+                <span>Loyalty Cards</span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active" data-section="home">
+                    <i class="fas fa-home"></i>
+                    <span>Inicio</span>
+                </a>
+                <a href="#cards" class="nav-link" data-section="cards">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Mis Tarjetas</span>
+                </a>
+                <a href="#merchants" class="nav-link" data-section="merchants">
+                    <i class="fas fa-store"></i>
+                    <span>Comercios</span>
+                </a>
+                <a href="#profile" class="nav-link" data-section="profile">
+                    <i class="fas fa-user"></i>
+                    <span>Perfil</span>
+                </a>
+                <button class="nav-link logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Salir</span>
+                </button>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Auth Screen -->
+    <div id="auth" class="auth-screen">
+        <div class="auth-container">
+            <div class="auth-header">
+                <i class="fas fa-credit-card"></i>
+                <h1>Digital Loyalty Cards</h1>
+                <p>Tu programa de fidelidad digital</p>
+            </div>
+
+            <!-- Login Form -->
+            <div id="loginForm" class="auth-form active">
+                <h2>Iniciar Sesión</h2>
+                <form id="loginFormElement">
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="loginEmail" placeholder="Email" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="loginPassword" placeholder="Contraseña" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Iniciar Sesión
+                    </button>
+                </form>
+                <p class="auth-switch">
+                    ¿No tienes cuenta? 
+                    <a href="#" id="showRegister">Regístrate aquí</a>
+                </p>
+            </div>
+
+            <!-- Register Form -->
+            <div id="registerForm" class="auth-form">
+                <h2>Crear Cuenta</h2>
+                <form id="registerFormElement">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="registerName" placeholder="Nombre completo" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="registerEmail" placeholder="Email" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="registerPassword" placeholder="Contraseña" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i>
+                        Crear Cuenta
+                    </button>
+                </form>
+                <p class="auth-switch">
+                    ¿Ya tienes cuenta? 
+                    <a href="#" id="showLogin">Inicia sesión aquí</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="app" class="app-container">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <h1>¡Bienvenido a tus Loyalty Cards!</h1>
+                <p>Gestiona todas tus tarjetas de fidelidad en un solo lugar</p>
+                <div class="stats">
+                    <div class="stat-card">
+                        <i class="fas fa-credit-card"></i>
+                        <h3 id="totalCards">0</h3>
+                        <p>Tarjetas</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-star"></i>
+                        <h3 id="totalPoints">0</h3>
+                        <p>Puntos</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-gift"></i>
+                        <h3 id="availableRewards">0</h3>
+                        <p>Recompensas</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <h2>Acciones Rápidas</h2>
+                <div class="action-grid">
+                    <button class="action-card" data-action="scan">
+                        <i class="fas fa-qrcode"></i>
+                        <h3>Escanear QR</h3>
+                        <p>Gana puntos</p>
+                    </button>
+                    <button class="action-card" data-action="add-card">
+                        <i class="fas fa-plus"></i>
+                        <h3>Nueva Tarjeta</h3>
+                        <p>Añadir comercio</p>
+                    </button>
+                    <button class="action-card" data-action="view-cards">
+                        <i class="fas fa-wallet"></i>
+                        <h3>Mis Tarjetas</h3>
+                        <p>Ver todas</p>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cards Section -->
+        <section id="cards" class="section">
+            <div class="section-header">
+                <h1>Mis Tarjetas de Fidelidad</h1>
+                <button class="btn btn-primary" id="addCardBtn">
+                    <i class="fas fa-plus"></i>
+                    Nueva Tarjeta
+                </button>
+            </div>
+            <div id="cardsContainer" class="cards-grid">
+                <!-- Cards will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Merchants Section -->
+        <section id="merchants" class="section">
+            <div class="section-header">
+                <h1>Comercios Disponibles</h1>
+                <button class="btn btn-secondary" id="refreshMerchants">
+                    <i class="fas fa-sync-alt"></i>
+                    Actualizar
+                </button>
+            </div>
+            <div id="merchantsContainer" class="merchants-grid">
+                <!-- Merchants will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="section">
+            <div class="profile-container">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h1 id="profileName">Usuario</h1>
+                    <p id="profileEmail">email@example.com</p>
+                </div>
+
+                <div class="profile-stats">
+                    <div class="profile-stat">
+                        <h3 id="profileTotalCards">0</h3>
+                        <p>Tarjetas Activas</p>
+                    </div>
+                    <div class="profile-stat">
+                        <h3 id="profileTotalPoints">0</h3>
+                        <p>Puntos Totales</p>
+                    </div>
+                    <div class="profile-stat">
+                        <h3 id="profileRewardsEarned">0</h3>
+                        <p>Recompensas</p>
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <h2>Actividad Reciente</h2>
+                    <div id="recentTransactions" class="transactions-list">
+                        <!-- Recent transactions will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- QR Scanner Modal -->
+    <div id="qrModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Escanear Código QR</h2>
+                <button class="modal-close" id="closeQrModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="qrReader" class="qr-reader">
+                    <div class="qr-scanner">
+                        <div class="qr-frame"></div>
+                        <p>Apunta la cámara al código QR</p>
+                    </div>
+                </div>
+                <div class="qr-manual">
+                    <p>¿No puedes escanear? Ingresa el código manualmente:</p>
+                    <div class="input-group">
+                        <input type="text" id="manualQrInput" placeholder="Código QR">
+                        <button class="btn btn-primary" id="processManualQr">
+                            <i class="fas fa-check"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Card Modal -->
+    <div id="addCardModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Añadir Nueva Tarjeta</h2>
+                <button class="modal-close" id="closeAddCardModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="addCardForm">
+                    <div class="input-group">
+                        <label>Seleccionar Comercio</label>
+                        <select id="merchantSelect" required>
+                            <option value="">Selecciona un comercio</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Tipo de Tarjeta</label>
+                        <select id="cardTypeSelect">
+                            <option value="points">Puntos</option>
+                            <option value="stamps">Sellos</option>
+                            <option value="visits">Visitas</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Crear Tarjeta
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card Details Modal -->
+    <div id="cardDetailsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="cardDetailsTitle">Detalles de Tarjeta</h2>
+                <button class="modal-close" id="closeCardDetailsModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="cardDetailsContent">
+                    <!-- Card details will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
